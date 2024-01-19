@@ -38,7 +38,7 @@ install_package_openssl(){
     cd $petra_tools_source_dir/$package_name
     
     # openssl 0.9.8i config options
-    Configure no-asm no-krb5 no-zlib shared threads linux-x86_64 --prefix=$petra_tools_install_dir/$package_name
+    ./Configure no-asm no-krb5 no-zlib shared threads linux-x86_64 --prefix=$petra_tools_install_dir/$package_name
     # no-asm: Does not use assembly language that is dependent on a specific CPU architecture, such as Intel or AMD."
     # no-zlib: Does not use zlib related functions such as EVP_zlib, COMP_zlib.
     # no-krb5: Disables Kerberos 5 protocol functions such as krb5_c_random_make_octets, krb5_encrypt, and krb5_decrypt.
@@ -68,7 +68,7 @@ install_package_zlib(){
     # To use this option, it must be assigned to the CFLAGS environment variable.
     # Using the '--shared' option with configure applies the -fPIC option, but this option does not generate the zlib.a static library.
     export CFLAGS="-fPIC"
-    configure --prefix=$petra_tools_install_dir/$package_name
+    ./configure --prefix=$petra_tools_install_dir/$package_name
     unset CFLAGS
     
     make
@@ -91,7 +91,7 @@ install_package_esmtp(){
     
     [[ ! -d "m4" ]] && mkdir m4
     autoreconf --install --force
-    configure --prefix=$petra_tools_install_dir/$package_name \
+    ./configure --prefix=$petra_tools_install_dir/$package_name \
     --enable-shared=no \
     --enable-static=yes \
     --with-pic \
@@ -120,7 +120,7 @@ install_package_curl(){
     [[ ! -d "m4" ]] && mkdir m4
     autoreconf --install --force
     
-    configure --prefix=$petra_tools_install_dir/$package_name \
+    ./configure --prefix=$petra_tools_install_dir/$package_name \
     --enable-shared=no  \
     --enable-static=yes \
     --with-pic \
@@ -188,7 +188,7 @@ install_package_pcap(){
     cd $petra_tools_source_dir/$package_name
     
     export CFLAGS="-fPIC"
-    configure --prefix=$petra_tools_install_dir/$package_name
+    ./configure --prefix=$petra_tools_install_dir/$package_name
     unset CFLAGS
     
     make
@@ -209,7 +209,7 @@ install_package_iconv(){
     download_package $package_name ftp://ftp.gnu.org/pub/gnu/libiconv/libiconv-$package_version.tar.gz
     cd $petra_tools_source_dir/$package_name
     
-    configure --prefix=$petra_tools_install_dir/$package_name \
+    ./configure --prefix=$petra_tools_install_dir/$package_name \
     --enable-shared=no \
     --enable-static=yes \
     --with-pic
@@ -233,7 +233,7 @@ install_package_chardet(){
     download_package $package_name https://github.com/Joungkyun/libchardet/archive/refs/tags/$package_version.tar.gz
     cd $petra_tools_source_dir/$package_name
     
-    configure --prefix=$petra_tools_install_dir/$package_name \
+    ./configure --prefix=$petra_tools_install_dir/$package_name \
     --enable-shared=no \
     --enable-static=yes \
     --with-pic
