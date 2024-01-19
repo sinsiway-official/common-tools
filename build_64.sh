@@ -49,7 +49,7 @@ install_package_openssl(){
     make
     make install
     
-    ln -sf $petra_tools_install_dir/$package_name/include/* $petra_tools_include_dir
+    ln -sf $petra_tools_install_dir/$package_name/include/openssl/* $petra_tools_include_dir
 }
 
 #
