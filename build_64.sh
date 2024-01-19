@@ -112,7 +112,7 @@ install_package_curl(){
     cd $petra_tools_home
     
     local package_version=7_40_0
-    local package_name=curl-$package_version
+    local package_name=curl-curl-$package_version
     
     download_package $package_name https://github.com/curl/curl/archive/refs/tags/curl-$package_version.tar.gz
     cd $petra_tools_source_dir/$package_name
