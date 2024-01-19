@@ -172,7 +172,7 @@ install_package_curl(){
     make
     make install
     
-    ln -sf $petra_tools_install_dir/$package_name/include/* $petra_tools_include_dir
+    ln -sf $petra_tools_install_dir/$package_name/include/curl/* $petra_tools_include_dir
 }
 
 #
@@ -241,7 +241,7 @@ install_package_chardet(){
     make
     make install
     
-    ln -sf $petra_tools_install_dir/$package_name/include/* $petra_tools_include_dir
+    ln -sf $petra_tools_install_dir/$package_name/include/chardet/* $petra_tools_include_dir
 }
 
 install_package() {
