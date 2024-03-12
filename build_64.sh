@@ -1,3 +1,4 @@
+PATH=$PATH:.
 set -e # Exit immediately if a command exits with a non-zero status.
 
 petra_tools_home=$(pwd)
