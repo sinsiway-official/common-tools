@@ -36,7 +36,7 @@ install_package_openssl(){
     local package_version=0_9_8i
     local package_name=openssl-$package_version
 
-    if [ -d $petra_tools_source_dir/$package_name ]; then
+    if [ -d $petra_tools_install_dir/$package_name ]; then
         echo "The '$package_name' package has already been installed."
         echo ""
         return
@@ -69,7 +69,7 @@ install_package_zlib(){
     local package_version=1.2.3
     local package_name=zlib-$package_version
     
-    if [ -d $petra_tools_source_dir/$package_name ]; then
+    if [ -d $petra_tools_install_dir/$package_name ]; then
         echo "The '$package_name' package has already been installed."
         echo ""
         return
@@ -100,7 +100,7 @@ install_package_esmtp(){
     local package_version=1.0.6
     local package_name=esmtp-$package_version
 
-    if [ -d $petra_tools_source_dir/$package_name ]; then
+    if [ -d $petra_tools_install_dir/$package_name ]; then
         echo "The '$package_name' package has already been installed."
         echo ""
         return
@@ -134,7 +134,7 @@ install_package_curl(){
     local package_version=7_40_0
     local package_name=curl-$package_version
 
-    if [ -d $petra_tools_source_dir/$package_name ]; then
+    if [ -d $petra_tools_install_dir/$package_name ]; then
         echo "The '$package_name' package has already been installed."
         echo ""
         return
@@ -210,7 +210,7 @@ install_package_pcap(){
     local package_version=0.9.4
     local package_name=pcap-$package_version
 
-    if [ -d $petra_tools_source_dir/$package_name ]; then
+    if [ -d $petra_tools_install_dir/$package_name ]; then
         echo "The '$package_name' package has already been installed."
         echo ""
         return
@@ -238,7 +238,7 @@ install_package_iconv(){
     local package_version=1.11
     local package_name=iconv-$package_version
 
-    if [ -d $petra_tools_source_dir/$package_name ]; then
+    if [ -d $petra_tools_install_dir/$package_name ]; then
         echo "The '$package_name' package has already been installed."
         echo ""
         return
@@ -250,8 +250,7 @@ install_package_iconv(){
     configure --prefix=$petra_tools_install_dir/$package_name \
     --enable-shared=no \
     --enable-static=yes \
-    --with-pic
-    --enable-shared=no --enable-static=yes  --with-pic
+    --with-pic    
     
     make
     make install
@@ -268,7 +267,7 @@ install_package_chardet(){
     local package_version=1.0.1
     local package_name=chardet-$package_version
 
-    if [ -d $petra_tools_source_dir/$package_name ]; then
+    if [ -d $petra_tools_install_dir/$package_name ]; then
         echo "The '$package_name' package has already been installed."
         echo ""
         return
