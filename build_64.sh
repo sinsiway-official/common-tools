@@ -312,8 +312,6 @@ extracted_installed_objects(){
             echo "The objects from archive \"$installed_static_library\" have been extracted."
         done
     done
-    
-    cp $petra_tools_home/symbol_scrypts.ld $installed_objects_hidden_dir
 }
 
 make_tools_static_library() {
