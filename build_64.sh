@@ -1,3 +1,5 @@
+set -e # Exit immediately if a command exits with a non-zero status.
+
 petra_tools_home=$(pwd)
 petra_tools_source_dir=$petra_tools_home/src
 petra_tools_install_dir=$petra_tools_home/install
@@ -33,6 +35,12 @@ install_package_openssl(){
     
     local package_version=0_9_8i
     local package_name=openssl-$package_version
+
+    if [ -d $petra_tools_source_dir/$package_name ]; then
+        echo "The '$package_name' package has already been installed."
+        echo ""
+        return
+    fi
     
     download_package $package_name https://github.com/openssl/openssl/archive/refs/tags/OpenSSL_$package_version.tar.gz
     cd $petra_tools_source_dir/$package_name
@@ -47,7 +55,7 @@ install_package_openssl(){
     # linux-x86_64: Specifies the target platform.
     
     make
-    make install
+    make install_sw
     
     ln -sf $petra_tools_install_dir/$package_name/include/* $petra_tools_include_dir
 }
@@ -60,6 +68,12 @@ install_package_zlib(){
     
     local package_version=1.2.3
     local package_name=zlib-$package_version
+    
+    if [ -d $petra_tools_source_dir/$package_name ]; then
+        echo "The '$package_name' package has already been installed."
+        echo ""
+        return
+    fi
     
     download_package $package_name https://github.com/madler/zlib/archive/refs/tags/v$package_version.tar.gz
     cd $petra_tools_source_dir/$package_name
@@ -85,6 +99,12 @@ install_package_esmtp(){
     
     local package_version=1.0.6
     local package_name=esmtp-$package_version
+
+    if [ -d $petra_tools_source_dir/$package_name ]; then
+        echo "The '$package_name' package has already been installed."
+        echo ""
+        return
+    fi
     
     download_package $package_name https://github.com/libesmtp/libESMTP/archive/refs/tags/v$package_version.tar.gz
     cd $petra_tools_source_dir/$package_name
@@ -113,6 +133,12 @@ install_package_curl(){
     
     local package_version=7_40_0
     local package_name=curl-$package_version
+
+    if [ -d $petra_tools_source_dir/$package_name ]; then
+        echo "The '$package_name' package has already been installed."
+        echo ""
+        return
+    fi
     
     download_package $package_name https://github.com/curl/curl/archive/refs/tags/curl-$package_version.tar.gz
     cd $petra_tools_source_dir/$package_name
@@ -183,6 +209,12 @@ install_package_pcap(){
     
     local package_version=0.9.4
     local package_name=pcap-$package_version
+
+    if [ -d $petra_tools_source_dir/$package_name ]; then
+        echo "The '$package_name' package has already been installed."
+        echo ""
+        return
+    fi
     
     download_package $package_name https://github.com/the-tcpdump-group/libpcap/archive/refs/tags/libpcap-$package_version.tar.gz
     cd $petra_tools_source_dir/$package_name
@@ -205,6 +237,12 @@ install_package_iconv(){
     
     local package_version=1.11
     local package_name=iconv-$package_version
+
+    if [ -d $petra_tools_source_dir/$package_name ]; then
+        echo "The '$package_name' package has already been installed."
+        echo ""
+        return
+    fi
     
     download_package $package_name ftp://ftp.gnu.org/pub/gnu/libiconv/libiconv-$package_version.tar.gz
     cd $petra_tools_source_dir/$package_name
@@ -229,6 +267,12 @@ install_package_chardet(){
     
     local package_version=1.0.1
     local package_name=chardet-$package_version
+
+    if [ -d $petra_tools_source_dir/$package_name ]; then
+        echo "The '$package_name' package has already been installed."
+        echo ""
+        return
+    fi
     
     download_package $package_name https://github.com/Joungkyun/libchardet/archive/refs/tags/$package_version.tar.gz
     cd $petra_tools_source_dir/$package_name
