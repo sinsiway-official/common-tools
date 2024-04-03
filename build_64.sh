@@ -47,7 +47,7 @@ install_package_openssl(){
     # linux-x86_64: Specifies the target platform.
     
     make
-    make install
+    make install_sw
     
     ln -sf $petra_tools_install_dir/$package_name/include/openssl/* $petra_tools_include_dir
 }
@@ -191,6 +191,8 @@ install_package_pcap(){
     ./configure --prefix=$petra_tools_install_dir/$package_name
     unset CFLAGS
     
+    sed -i '1s/^/#include <linux/\sockios.h>\n/' pcap-linux.c
+
     make
     make install
     
@@ -212,7 +214,7 @@ install_package_iconv(){
     ./configure --prefix=$petra_tools_install_dir/$package_name \
     --enable-shared=no \
     --enable-static=yes \
-    --with-pic
+    --with-pic \
     --enable-shared=no --enable-static=yes  --with-pic
     
     make
