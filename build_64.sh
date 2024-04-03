@@ -191,7 +191,7 @@ install_package_pcap(){
     ./configure --prefix=$petra_tools_install_dir/$package_name
     unset CFLAGS
     
-    sed -i '1s/^/#include <linux/\sockios.h>\n/' pcap-linux.c
+    sed -i '1s|^|#include <linux/sockios.h>\n|' pcap-linux.c
 
     make
     make install
