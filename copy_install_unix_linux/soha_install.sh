@@ -8,11 +8,12 @@ display_help() {
     echo "Usage: $(basename $0) [OPTIONS]"
     echo ""
     echo "Options:"
-    echo "  -src [source_dir]    Specify the source directory where the files are located."
-    echo "  -dest [install_dir]  Specify the destination directory where the files should be installed."
+    echo "  -s, --src [source_dir]    Specify the source directory where the files are located."
+    echo "  -d, --dest [install_dir]  Specify the destination directory where the files should be installed."
     echo ""
     echo "Example:"
-    echo "  $(basename $0) -src /path/to/source -dest /path/to/destination"
+    echo "  $(basename $0) --src /path/to/source --dest /path/to/destination"
+    echo "  $(basename $0) -s /path/to/source -dt /path/to/destination"
     echo ""
     echo "This script assigns the provided source and destination directories to global variables."
     echo "Make sure that both directories exist before calling the script."
@@ -31,11 +32,11 @@ assign_directories() {
     # Parse command-line options
     while [ "$#" -gt 0 ]; do
         case "$1" in
-        -src)
+        -s | --src)
             src_dir="$2"
             shift 2 # Move past the argument value
             ;;
-        -dest)
+        -d | --dest)
             dest_dir="$2"
             shift 2 # Move past the argument value
             ;;
@@ -234,6 +235,7 @@ install_soha_headers() {
     echo "Copying additional configuration and DB interface directories..."
     local db_interfaces="goldilocks informix cubrid_v9.1 db2_v9.5 tibero altibase teradata sybase mysql hanadb postgres"
     for dbif in ${db_interfaces}; do
+        mkdir -p $soha_install_include_dir/${dbif%_*}
         if [ -d "$soha_source_lib_dir/dbif/$dbif" ]; then
             cp -R $soha_source_lib_dir/dbif/$dbif/*.h $soha_install_include_dir/${dbif%_*}
             echo "Copied '$dbif' ... OK"

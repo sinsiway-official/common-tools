@@ -5,11 +5,12 @@ display_help() {
     echo "Usage: $(basename $0) [OPTIONS]"
     echo ""
     echo "Options:"
-    echo "  -src [source_dir]    Specify the source directory where the files are located."
-    echo "  -dest [install_dir]  Specify the destination directory where the files should be installed."
+    echo "  -s, --src [source_dir]    Specify the source directory where the files are located."
+    echo "  -d, --dest [install_dir]  Specify the destination directory where the files should be installed."
     echo ""
     echo "Example:"
-    echo "  $(basename $0) -src /path/to/source -dest /path/to/destination"
+    echo "  $(basename $0) --src /path/to/source --dest /path/to/destination"
+    echo "  $(basename $0) -s /path/to/source -d /path/to/destination"
     echo ""
     echo "This script assigns the provided source and destination directories to global variables."
     echo "Make sure that both directories exist before calling the script."
@@ -28,11 +29,11 @@ assign_directories() {
     # Parse command-line options
     while [ "$#" -gt 0 ]; do
         case "$1" in
-        -src)
+        -s | --src)
             src_dir="$2"
             shift 2 # Move past the argument value
             ;;
-        -dest)
+        -d | --dest)
             dest_dir="$2"
             shift 2 # Move past the argument value
             ;;

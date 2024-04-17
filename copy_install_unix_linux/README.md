@@ -24,13 +24,13 @@ This script is used to install SOHA from a predefined source directory to a dest
 
 bashCopy code
 
-`./soha_install.sh -src [source_dir] -dest [install_dir]`
+`./soha_install.sh --src [source_dir] --dest [install_dir]`
 
 #### Example
 
 bashCopy code
 
-`./tools_install.sh -src /path/to/src -dest /public/soha`
+`./soha_install.sh --src /path/to/src --dest /public/soha`
 
 ### tools_install.sh
 
@@ -40,13 +40,13 @@ This script installs additional tools required by SOHA, copying necessary librar
 
 bashCopy code
 
-`./tools_install.sh -src [source_dir] -dest [install_dir]`
+`./tools_install.sh --src [source_dir] --dest [install_dir]`
 
 #### Example
 
 bashCopy code
 
-`./tools_install.sh -src /path/to/src -dest /public/tools`
+`./tools_install.sh --src /path/to/src --dest /public/tools`
 
 ## Features
 
