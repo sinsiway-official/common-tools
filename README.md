@@ -1,52 +1,31 @@
-# Petra Common Libraries Build Guide
+# Project Installation Scripts
 
-## Overview
+This repository contains a set of scripts designed to automate the installation processes for different operating systems. Each directory in the repository is tailored for specific system requirements and installation methods. Below is a description of each directory:
 
-This document provides guidance on how to install and build the Petra Common Libraries, which include `libtools.so` and `libtoolsst.a`. These libraries encompass the following libraries and their versions:
+## Directories
 
-- OpenSSL, Version: 0.9.8i
-- zlib, Version: 1.2.3
-- esmtp, Version: 1.0.6
-- curl, Version: 7.40.0
-- pcap, Version: 0.9.4
-- iconv, Version: 1.11
-- chardet, Version: 1.0.1
+### `build_install_linux`
 
-**Note**: The installation is typically performed under the `/public/tools` directory. All commands require `sudo` permissions for execution.
+This directory includes scripts for building and installing all necessary packages and libraries on Linux systems. It is intended for situations where a fresh setup and installation are required.
 
-## Directory Structure
+### `copy_install_solaris`
 
-- `src`: The directory where source codes are stored.
-- `install`: The directory where installed libraries and header files are saved.
-- `include`: The directory for common header files.
-- `lib`: The directory for the generated static and shared libraries.
-- `.objs`: Temporary storage for object files.
+Scripts in this directory are designed to handle installations on Unix systems by copying from an existing 'petra release' build environment. This method is suitable for systems where the environment is pre-built and only needs to be deployed.
 
-## Installation and Build Procedure
+### `copy_install_unix_linux`
 
-> **Note**: The installation is typically performed under the `/public/tools` directory and all commands require `sudo` permissions.
+This directory contains scripts optimized for older versions of bash, specifically for Solaris servers. These scripts perform simple installation tasks, making them ideal for environments with limited bash functionality.
 
-1. **Create Directories**: Create the required directories if they do not exist.
- 
- ```bash 
- sudo [[ ! -d $petra_tools_source_dir ]] && mkdir $petra_tools_source_dir
- ```
-  
-2. **Download and Install Packages**: Download and install each dependency package. For example, the function to install OpenSSL is `install_package_openssl`.
- 
-3. **Extract Object Files**: Extract object files from the static libraries (`.a` files) of each package.
+## Usage
 
-```bash
-sudo ar -x $installed_static_library
-```
+To use these scripts, navigate to the respective directory based on your operating system and requirements. Each directory contains a detailed `README.md` with instructions on how to execute the scripts properly.
 
-4. **Generate Libraries**: Create a single static and shared library from the extracted object files.
+Ensure that you have the necessary permissions to execute the scripts and that your system meets all prerequisites as described in the individual `README.md` files in each directory.
 
-```bash
-sudo ar -cr libtoolsst.a *.o  # For static library sudo gcc -o libtools.so *.o -shared  # For shared library
-```
+## Contributing
 
-## Additional Information
+Contributions to improve the scripts or add new features are welcome. Please fork the repository, make your changes, and submit a pull request. Ensure your contributions are well-documented and adhere to the existing coding standards.
 
-- The script offers various configuration options to customize the libraries.
-- Some libraries may have additional dependencies. Please refer to each library's installation guide for more information.
+## License
+
+Copyright 2024 Sinsiway. All Rights Reserved.
