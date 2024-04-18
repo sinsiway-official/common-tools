@@ -178,16 +178,12 @@ install_library_files() {
         echo "Copying library files to $versioned_soha_install_lib_dir..."
         for base_name in ${shared_files}; do
             local full_file_name="${base_name}.${shared_extension}"
-            local file_versioned="${full_file_name}.${soha_release_version}.${soha_patch_version}"
-            cp -f "${lib_dir}/${full_file_name}" "${versioned_soha_install_lib_dir}/${file_versioned}"
-            ln -sf "${versioned_soha_install_lib_dir}/${file_versioned}" "${versioned_soha_install_lib_dir}/${full_file_name}"
+            cp -f "${lib_dir}/${full_file_name}" "${versioned_soha_install_lib_dir}/${full_file_name}"
             echo "${file_versioned} copied ... OK"
         done
         for base_name in ${static_files}; do
             local full_file_name="${base_name}.${static_extension}"
-            local file_versioned="${full_file_name}.${soha_release_version}.${soha_patch_version}"
-            cp -f "${lib_dir}/${full_file_name}" "${versioned_soha_install_lib_dir}/${file_versioned}"
-            ln -sf "${versioned_soha_install_lib_dir}/${file_versioned}" "${versioned_soha_install_lib_dir}/${full_file_name}"
+            cp -f "${lib_dir}/${full_file_name}" "${versioned_soha_install_lib_dir}/${full_file_name}"
             echo "${file_versioned} copied ... OK"
         done
         echo "All files have been successfully copied."

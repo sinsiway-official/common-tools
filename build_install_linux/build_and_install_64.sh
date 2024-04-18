@@ -19,10 +19,10 @@ display_help() {
     echo "Usage: $(basename $0) [OPTIONS]"
     echo ""
     echo "Options:"
-    echo "  -dest [install_dir]  Specify the destination directory where the files should be installed."
+    echo "  -d, --dest [install_dir]  Specify the destination directory where the files should be installed."
     echo ""
     echo "Example:"
-    echo "  $(basename $0) -dest /path/to/destination"
+    echo "  $(basename $0) --dest /path/to/destination"
     echo ""
     echo "This script assigns the provided source and destination directories to global variables."
     echo "Make sure that both directories exist before calling the script."
@@ -40,7 +40,7 @@ assign_directories() {
     # Parse command-line options
     while [ "$#" -gt 0 ]; do
         case "$1" in
-        -dest)
+        -d | --dest)
             dest_dir="$2"
             shift 2 # Move past the argument value
             ;;
@@ -412,6 +412,10 @@ make_libraries() {
     cp -fR $petra_tools_library_dir/* $target_tools_dir/lib
 }
 
-assign_directories $@
-install_package
-make_libraries
+main() {
+    assign_directories $@ || return 1
+    install_package
+    make_libraries
+}
+
+main "$@"
