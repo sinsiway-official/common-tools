@@ -26,9 +26,9 @@ This script copies SOHA libraries and headers from a specified source directory 
 
 #### Syntax
 
-bashCopy code
-
-`./simple_soha_install.sh`
+```bash
+bash ./simple_soha_install.sh
+```
 
 #### Expected Directories
 
@@ -41,9 +41,9 @@ This script is used to install various tools by copying necessary libraries and 
 
 #### Syntax
 
-bashCopy code
-
-`./simple_tools_install.sh`
+```bash
+bash ./simple_tools_install.sh
+```
 
 #### Expected Directories
 

@@ -1,5 +1,7 @@
-soha_source_dir="/data/hudson/workspace/petra4_sun_x86_64_release/b64/REL-4.1.0.1/src"
-tools_install_dir="/public/tools"
+#!/bin/bash
+
+config_file="setting.properties"
+eval $(awk -F= '{print $1"="$2}' $config_file)
 
 if [ -z "$soha_source_dir" ] || [ -z "$tools_install_dir" ]; then
     echo "Both source and destination directories must be specified ... FAILED"
