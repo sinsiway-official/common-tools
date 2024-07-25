@@ -1,7 +1,7 @@
 #!/bin/bash
 
 config_file="setting.properties"
-eval $(awk -F= '{print $1"="$2}' $config_file)
+eval `awk -F= '{print $1"="$2}' $config_file`
 
 if [ -z "$soha_source_dir" ] || [ -z "$soha_tools_install_dir" ]; then
     echo "Both source and destination directories must be specified ... FAILED"
